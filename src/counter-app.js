@@ -6,6 +6,7 @@ export class CounterApp extends DDDSuper(LitElement) {
     return "counter-app";
   }
 
+  //Default values for counter-app
   constructor() {
     super();
     this.count = 0;
@@ -13,6 +14,7 @@ export class CounterApp extends DDDSuper(LitElement) {
     this.max = 100;
   }
 
+  //Properties used throughout app
   static get properties() {
     return {
       count: { type: Number },
@@ -21,6 +23,7 @@ export class CounterApp extends DDDSuper(LitElement) {
     };
   }
 
+  //more styles
   static get styles() {
     return [
       super.styles,
@@ -68,18 +71,21 @@ export class CounterApp extends DDDSuper(LitElement) {
     ];
   }
 
+  //Adds 1 to the count
   increment() {
     if (this.count < this.max) {
       this.count++;
     }
   }
 
+  //Subtracts 1 from count
   decrement() {
     if (this.count > this.min) {
       this.count--;
     }
   }
 
+  //When th count hits determined number then make it rain with confetti
   updated(changedProperties) {
     if (changedProperties.has('count') && this.count === this.max) {
       
@@ -87,6 +93,7 @@ export class CounterApp extends DDDSuper(LitElement) {
     }
   }
 
+  //Changing the color depending on the value of count
   getColor() {
     if (this.count === this.max || this.count === this.min) {
       return 'var(--ddd-theme-default-original87Pink)'; // Max and mix
@@ -99,6 +106,7 @@ export class CounterApp extends DDDSuper(LitElement) {
     return 'var(--ddd-theme-default-opportunityGreen)'; // Default
   }
 
+  //Make it rain property that gets imported from confetti-container
   makeItRain() {
     import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(() => {
 
@@ -109,13 +117,14 @@ export class CounterApp extends DDDSuper(LitElement) {
     });
   }
 
+  //Structure of each counter used within the counter-app
   render() {
     return html`
       <confetti-container id="confetti" class="wrapper">
         <div class="counter" style="color: ${this.getColor()}">${this.count}</div>
         <div>
-          <button @click="${this.increment}" ?disabled="${this.count === this.max}" title="Increment by one">+</button>
-          <button @click="${this.decrement}" ?disabled="${this.count === this.min}" title="Decrement by one">-</button>
+          <button @click="${this.increment}" ?disabled="${this.count === this.max}" title="Increment by one">+</button> <!--When Clicked add 1 to count-->
+          <button @click="${this.decrement}" ?disabled="${this.count === this.min}" title="Decrement by one">-</button> <!--When clicked subtract 1 from count-->
         </div>
       </confetti-container>
     `;

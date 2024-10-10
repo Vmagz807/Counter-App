@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="Description" content="Demonstration for counter-app">
 
-
+  <!--Styles for counter-app-->
   <style>
     :root, html, body {
       margin: 0;
@@ -48,21 +48,22 @@
   <title>counter-app</title>
 </head>
 
+<!--Actual webpage plus structure. -->
 <body>
   <div id="demo">
-    <h1 class="counter-title">counter-app</h1>
+    <h1 class="counter-title">counter-app</h1> 
 
     <h2 class="counter-title">Counter 1</h2>
-    <counter-app count="16" min="10" max="25"><div>asdasd</div></counter-app>
+    <counter-app count="16" min="10" max="25"><div>asdasd</div></counter-app> <!--Counter App 1-->
 
     <h2 class="counter-title">Counter 2</h2>
-    <counter-app><div>asdasd</div></counter-app>
+    <counter-app><div>asdasd</div></counter-app><!--Counter App 2-->
 
     <h2 class="counter-title">Slot Stuff</h2>
-    <counter-app title="Slot Stuff" data-accent="2" data-primary="17"><div>Sample slot content</div></counter-app>
+    <counter-app title="Slot Stuff" data-accent="2" data-primary="17"><div>Sample slot content</div></counter-app> <!--Counter App 3-->
    
     <h2 class="counter-title">Property usage</h2>
-    <counter-app id="example" title="Sample property title"></counter-app>
+    <counter-app id="example" title="Sample property title"></counter-app><!--Counter App 4-->
   
   </div>
   <script type="module" src="./src/counter-app.js"></script>
